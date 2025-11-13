@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --account=uot256
+#SBATCH --job-name="Word Count"
+#SBATCH --output="wordcount.local.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=5G
+#SBATCH --export=ALL 
+#SBATCH --time=10
+
+module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2
+SW=/expanse/lustre/projects/uot199/fegaras
+export HADOOP_HOME=$SW/hadoop-3.2.2
+PATH="$HADOOP_HOME/bin:$PATH"
+
+rm -rf output-wc-local
+hadoop --config $SW/conf jar WordCount.jar WordCount wc-input.txt output-wc-local
+
+# need to delete this directory to allow other users to submit map-reduce jobs
+rm -rf /tmp/hadoop
