@@ -19,7 +19,7 @@ import org.dtb9096.hadoop.job2.TitleCountReducer;
 import java.io.IOException;
 
 public class Main {
-    static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
         String[] files = new GenericOptionsParser(conf, args).getRemainingArgs();
         Path input1 = new Path(files[0]);
