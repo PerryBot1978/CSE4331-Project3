@@ -9,8 +9,6 @@ PATH="$HADOOP_HOME/bin:$PATH"
 rm -rf WordCount.jar
 rm -rf classes
 
-
-
 mkdir -p classes
 javac -d classes -cp classes:`hadoop classpath` WordCount.java
 jar cf WordCount.jar -C classes .
