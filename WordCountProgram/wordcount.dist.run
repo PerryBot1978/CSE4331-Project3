@@ -12,7 +12,7 @@
 export HADOOP_CONF_DIR=/home/$USER/expansecluster
 module load cpu/0.15.4 gcc/7.5.0 openjdk
 
-SW=/expanse/lustre/projects/uot199/fegaras
+SW=/expanse/lustre/projects/uot182/fegaras
 export HADOOP_HOME=$SW/hadoop-3.2.2
 export MYHADOOP_HOME=$SW/myhadoop
 PATH="$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$MYHADOOP_HOME/bin:$PATH"

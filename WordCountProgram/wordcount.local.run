@@ -10,7 +10,7 @@
 #SBATCH --time=10
 
 module load cpu/0.15.4 gcc/7.5.0 openjdk hadoop/3.2.2
-SW=/expanse/lustre/projects/uot199/fegaras
+SW=/expanse/lustre/projects/uot182/fegaras
 export HADOOP_HOME=$SW/hadoop-3.2.2
 PATH="$HADOOP_HOME/bin:$PATH"
 
