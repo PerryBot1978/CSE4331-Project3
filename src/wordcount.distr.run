@@ -30,7 +30,7 @@ hdfs dfs -put ../imdb00.title.basics.tsv /user/$USER/imdb00.title.basics.tsv
 hdfs dfs -put ../imdb00.title.actors.csv /user/$USER/imdb00.title.actors.csv
 
 hdfs dfs -mkdir /user/$USER/output
-hadoop jar Project3.jar Main /user/$USER/imdb00.title.basics.tsv /user/$USER/imdb00.title.actors.csv /user/$USER/output/year.counts.txt
+hadoop jar Project3.jar org.dtb9096.hadoop.Main /user/$USER/imdb00.title.basics.tsv /user/$USER/imdb00.title.actors.csv /user/$USER/output/year.counts.txt
 
 rm -rf output-distr
 mkdir output-distr
