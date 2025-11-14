@@ -10,6 +10,7 @@ import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+
 import org.dtb9096.hadoop.job1.BasicActorJoinReducer;
 import org.dtb9096.hadoop.job1.TitleActorsMapper;
 import org.dtb9096.hadoop.job1.TitleBasicsMapper;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
+        TextOutputFormat.SEPARATOR = "\t";
         String[] files = new GenericOptionsParser(conf, args).getRemainingArgs();
         Path input1 = new Path(files[0]);
         Path input2 = new Path(files[1]);
