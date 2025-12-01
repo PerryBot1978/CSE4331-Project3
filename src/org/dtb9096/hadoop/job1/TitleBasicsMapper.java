@@ -27,19 +27,18 @@ public class TitleBasicsMapper extends Mapper<Object, Text, Text, Text> {
         assert itr.countTokens() == 5;
 
         String titleID = itr.nextToken();
+        String titleType = itr.nextToken();
         itr.nextToken();
         itr.nextToken();
         itr.nextToken();
-        itr.nextToken();
-        // String titleType = itr.nextToken();
-        // String title = itr.nextToken();
         String year = itr.nextToken();
-        // String genres = itr.nextToken();
+        itr.nextToken();
+        itr.nextToken();
 
         out_key.set(titleID);
         out_value.set("movie," + year);
 
-        if (titleType.equals("movie") || titleType.equals("tvMovie")) {
+        if (titleType.contains("movie") || titleType.contains("tvMovie")) {
             context.write(out_key, out_value);
         }
     }
