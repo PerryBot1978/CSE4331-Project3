@@ -27,7 +27,10 @@ public class TitleBasicsMapper extends Mapper<Object, Text, Text, Text> {
         assert itr.countTokens() == 5;
 
         String titleID = itr.nextToken();
-        itr.nextToken().nextToken().nextToken().nextToken();
+        itr.nextToken();
+        itr.nextToken();
+        itr.nextToken();
+        itr.nextToken();
         // String titleType = itr.nextToken();
         // String title = itr.nextToken();
         String year = itr.nextToken();
