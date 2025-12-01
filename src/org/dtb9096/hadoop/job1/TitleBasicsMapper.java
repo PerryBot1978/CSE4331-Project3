@@ -27,10 +27,11 @@ public class TitleBasicsMapper extends Mapper<Object, Text, Text, Text> {
         assert itr.countTokens() == 5;
 
         String titleID = itr.nextToken();
-        String titleType = itr.nextToken();
-        String title = itr.nextToken();
+        itr.nextToken().nextToken().nextToken().nextToken();
+        // String titleType = itr.nextToken();
+        // String title = itr.nextToken();
         String year = itr.nextToken();
-        String genres = itr.nextToken();
+        // String genres = itr.nextToken();
 
         out_key.set(titleID);
         out_value.set("movie," + year);
