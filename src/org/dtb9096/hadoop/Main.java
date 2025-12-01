@@ -48,6 +48,7 @@ public class Main {
 
         Job job2 = Job.getInstance(conf, "actor count");
         job2.setJarByClass(Main.class);
+        job2.setInputFormatClass(KeyValueTextInputFormat.class);
 
         KeyValueTextInputFormat.addInputPath(job2, intermediate);
         TextOutputFormat.setOutputPath(job2, output);
