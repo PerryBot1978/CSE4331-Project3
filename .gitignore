@@ -23,6 +23,11 @@
 hs_err_pid*
 replay_pid*
 
-WordCountProgram/
+# Output
 output-distr/
 output-local/
+
+# Misc
+WordCountProgram/
+*.docx
+*.pdf
