@@ -18,10 +18,13 @@ import org.dtb9096.hadoop.job1.TitleBasicsMapper;
 import org.dtb9096.hadoop.job2.ActorFilterMapper;
 import org.dtb9096.hadoop.job2.TitleCountReducer;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+        long startTime = System.currentTimeMillis();
+
         TextOutputFormat.SEPARATOR = "\t";
         Configuration conf = new Configuration();
         String[] arguments = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -73,6 +76,11 @@ public class Main {
         job2.setMapperClass(ActorFilterMapper.class);
         job2.setReducerClass(TitleCountReducer.class);
 
-        System.exit(job2.waitForCompletion(true) ? 0 : 1);
+        int code = job2.waitForCompletion(true) ? 0 : 1;
+        long finishTime = System.currentTimeMillis();
+        long elapsedTime = finishTime - startTime;
+
+        System.out.println(elapsedTime);
+        System.exit(code);
     }
 }
