@@ -36,8 +36,8 @@ hadoop jar Project3.jar org.dtb9096.hadoop.Main \
     /user/$USER/output/year.counts1.txt \
     2 1 1 1
 
-rm -rf output-distr
-mkdir output-distr
+rm -rf output-distr/year.counts1
+mkdir -p output-distr/year.counts1
 
 hdfs dfs -get /user/$USER/output/* output-distr
 
