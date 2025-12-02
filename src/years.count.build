@@ -18,6 +18,6 @@ javac -d classes -cp classes:`hadoop classpath` \
 jar cf ../Project3.jar -C classes .
 
 chmod -R 750 classes
-chmod -R 750 Project3.jar
+chmod -R 750 ../Project3.jar
 echo "Compilation completed."
 
