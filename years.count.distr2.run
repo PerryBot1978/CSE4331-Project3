@@ -26,8 +26,8 @@ start-all.sh
 hdfs dfs -rm -r /user/$USER/*
 hdfs dfs -mkdir -p /user/$USER
 
-hdfs dfs -put ../imdb00.title.basics.tsv /user/$USER/imdb00.title.basics2.tsv
-hdfs dfs -put ../imdb00.title.actors.csv /user/$USER/imdb00.title.actors2.csv
+hdfs dfs -put imdb00.title.basics.tsv /user/$USER/imdb00.title.basics2.tsv
+hdfs dfs -put imdb00.title.actors.csv /user/$USER/imdb00.title.actors2.csv
 
 hdfs dfs -mkdir /user/$USER/output
 hadoop jar Project3.jar org.dtb9096.hadoop.Main \

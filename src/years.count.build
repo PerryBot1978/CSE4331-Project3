@@ -15,7 +15,7 @@ mkdir -p classes
 javac -d classes -cp classes:`hadoop classpath` \
   "$PACKAGE/Main.java" "$PACKAGE/job1/TitleActorsMapper.java" "$PACKAGE/job1/TitleBasicsMapper.java" \
   "$PACKAGE/job1/BasicActorJoinReducer.java" "$PACKAGE/job2/ActorFilterMapper.java" "$PACKAGE/job2/TitleCountReducer.java"
-jar cf Project3.jar -C classes .
+jar cf ../Project3.jar -C classes .
 
 chmod -R 750 classes
 chmod -R 750 Project3.jar
