@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A uot256
 #SBATCH --job-name="CSE 4331"
-#SBATCH --output="project3.distr.out"
+#SBATCH --output="project3.distr2.out"
 #SBATCH --partition=compute
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
@@ -33,11 +33,11 @@ hdfs dfs -mkdir /user/$USER/output
 hadoop jar Project3.jar org.dtb9096.hadoop.Main \
     /user/$USER/imdb00.title.basics.tsv \
     /user/$USER/imdb00.title.actors.csv \
-    /user/$USER/output/year.counts2.txt \
+    /user/$USER/output/year.counts2 \
     2 2 2 2
 
-rm -rf output-distr
-mkdir output-distr
+rm -rf output-distr/year.counts2
+mkdir -p output-distr/year.counts2
 
 hdfs dfs -get /user/$USER/output/* output-distr
 
