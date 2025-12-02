@@ -4,6 +4,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
@@ -21,8 +22,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
-        Configuration conf = new Configuration();
         TextOutputFormat.SEPARATOR = "\t";
+        Configuration conf = new Configuration();
         String[] arguments = new GenericOptionsParser(conf, args).getRemainingArgs();
         Path input1 = new Path(arguments[0]);
         Path input2 = new Path(arguments[1]);
@@ -34,7 +35,11 @@ public class Main {
         int mapperCount2 = Integer.parseInt(arguments[5]);
         int reducerCount2 = Integer.parseInt(arguments[6]);
 
-        Job job1 = Job.getInstance(conf, "title/actor join");
+        JobConf conf1 = new JobConf(conf);
+        conf1.setNumMapTasks(mapperCount1);
+        conf1.setNumReduceTasks(reducerCount1);
+
+        Job job1 = Job.getInstance(conf1, "title/actor join");
         job1.setJarByClass(Main.class);
 
         MultipleInputs.addInputPath(job1, input1, TextInputFormat.class, TitleBasicsMapper.class);
@@ -51,7 +56,11 @@ public class Main {
             System.exit(1);
         }
 
-        Job job2 = Job.getInstance(conf, "actor count");
+        JobConf conf2 = new JobConf(conf);
+        conf2.setNumMapTasks(mapperCount2);
+        conf2.setNumReduceTasks(reducerCount2);
+
+        Job job2 = Job.getInstance(conf2, "actor count");
         job2.setJarByClass(Main.class);
         job2.setInputFormatClass(KeyValueTextInputFormat.class);
 
