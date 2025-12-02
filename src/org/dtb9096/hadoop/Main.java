@@ -23,11 +23,16 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
         TextOutputFormat.SEPARATOR = "\t";
-        String[] files = new GenericOptionsParser(conf, args).getRemainingArgs();
-        Path input1 = new Path(files[0]);
-        Path input2 = new Path(files[1]);
+        String[] arguments = new GenericOptionsParser(conf, args).getRemainingArgs();
+        Path input1 = new Path(arguments[0]);
+        Path input2 = new Path(arguments[1]);
         Path intermediate = new Path("temp.txt");
-        Path output = new Path(files[2]);
+        Path output = new Path(arguments[2]);
+
+        int mapperCount1 = Integer.parseInt(arguments[3]);
+        int reducerCount1 = Integer.parseInt(arguments[4]);
+        int mapperCount2 = Integer.parseInt(arguments[5]);
+        int reducerCount2 = Integer.parseInt(arguments[6]);
 
         Job job1 = Job.getInstance(conf, "title/actor join");
         job1.setJarByClass(Main.class);

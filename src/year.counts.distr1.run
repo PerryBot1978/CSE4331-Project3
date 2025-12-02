@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A uot256
-#SBATCH --job-name="CSE 4331 - Project 3"
+#SBATCH --job-name="CSE 4331"
 #SBATCH --output="project3.distr.out"
 #SBATCH --partition=compute
 #SBATCH --nodes=1
@@ -30,7 +30,11 @@ hdfs dfs -put ../imdb00.title.basics.tsv /user/$USER/imdb00.title.basics.tsv
 hdfs dfs -put ../imdb00.title.actors.csv /user/$USER/imdb00.title.actors.csv
 
 hdfs dfs -mkdir /user/$USER/output
-hadoop jar Project3.jar org.dtb9096.hadoop.Main /user/$USER/imdb00.title.basics.tsv /user/$USER/imdb00.title.actors.csv /user/$USER/output/year.counts.txt
+hadoop jar Project3.jar org.dtb9096.hadoop.Main \
+    /user/$USER/imdb00.title.basics.tsv \
+    /user/$USER/imdb00.title.actors.csv \
+    /user/$USER/output/year.counts1.txt \
+    2 1 1 1
 
 rm -rf output-distr
 mkdir output-distr

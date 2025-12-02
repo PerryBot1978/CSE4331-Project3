@@ -16,7 +16,7 @@ This guide provides essential information for agents working in this Hadoop MapR
 
 ```bash
 cd src
-./wordcount.build
+./years.count.build
 ```
 
 This script:
@@ -38,15 +38,20 @@ cd src
 
 ```bash
 cd src
-sbatch wordcount.distr.run
+sbatch year.counts.distr1.run
 ```
 
-The distributed script:
-- Allocates 1 node with 4 tasks per node
-- Starts Hadoop HDFS with `myhadoop‑configure.sh`
-- Uploads input files (`../imdb00.title.basics.tsv` and `../imdb00.title.actors.csv`) to HDFS
-- Runs `Project3.jar` with class `org.dtb9096.hadoop.Main`
-- Retrieves results to `output‑distr/`
+Two distributed scripts are available with different mapper/reducer counts:
+
+- `year.counts.distr1.run`: uses 2 mappers and 1 reducer for job1, 1 mapper and 1 reducer for job2
+- `year.counts.distr2run`: uses 2 mappers and 2 reducers for both jobs
+
+Both scripts:
+- Allocate 1 node with 4 tasks per node
+- Start Hadoop HDFS with `myhadoop‑configure.sh`
+- Upload input files (`../imdb00.title.basics.tsv` and `../imdb00.title.actors.csv`) to HDFS
+- Run `Project3.jar` with class `org.dtb9096.hadoop.Main` (which now accepts four additional parameters for mapper/reducer counts)
+- Retrieve results to `output‑distr/`
 
 ### Building the WordCount Example
 
@@ -89,9 +94,9 @@ The WordCount distributed script uploads `wc‑input.txt` to HDFS and writes out
 │   │   └── job2/
 │   │       ├── ActorFilterMapper.java    # Filters for “Christian Bale”
 │   │       └── TitleCountReducer.java    # Counts movies per year
-│   ├── wordcount.build                   # Build script for main project
+│   ├── years.count.build                   # Build script for main project
 │   ├── wordcount.local.run               # Local run script (SLURM)
-│   └── wordcount.distr.run               # Distributed run script (SLURM)
+│   └── year.counts.distr1.run, year.counts.distr2run  # Distributed run scripts (SLURM)
 ├── WordCountProgram/
 │   ├── WordCount.java                    # Classic WordCount
 │   ├── wc‑input.txt                      # Example input
@@ -110,6 +115,7 @@ The WordCount distributed script uploads `wc‑input.txt` to HDFS and writes out
 - **Hard‑coded constants**:
   - `ActorFilterMapper.ACTOR = "Christian Bale"` – the actor to count.
   - `TextOutputFormat.SEPARATOR = "\t"` in `Main.java`.
+  - Mapper/reducer counts are now configurable via command-line arguments (four additional parameters after input/output paths).
 - **Intermediate output**: Job1 writes to `temp.txt` (relative path) which is automatically used as input for Job2.
 - **Key/Value types**:
   - Job1: `Text` keys and values.
