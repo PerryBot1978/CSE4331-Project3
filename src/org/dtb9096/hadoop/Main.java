@@ -80,7 +80,7 @@ public class Main {
         long finishTime = System.currentTimeMillis();
         long elapsedTime = finishTime - startTime;
 
-        System.out.println(elapsedTime);
+        System.out.printf("[TIME] %d%n", elapsedTime);
         System.exit(code);
     }
 }
