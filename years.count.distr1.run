@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A uot256
-#SBATCH --job-name="CSE 4331"
+#SBATCH --job-name="dtb9096"
 #SBATCH --output="project3.distr1.out"
 #SBATCH --partition=compute
 #SBATCH --nodes=1
