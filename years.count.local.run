@@ -17,8 +17,8 @@ PATH="$HADOOP_HOME/bin:$PATH"
 rm -rf output-local
 hadoop --config $SW/conf jar Project3.jar \
        org.dtb9096.hadoop.Main \
-       imdb00.title.basics1.tsv \
-       imdb00.title.actors1.csv \
+       imdb00.title.basics.tsv \
+       imdb00.title.actors.csv \
        output-local \
        2 1 1 1
 
