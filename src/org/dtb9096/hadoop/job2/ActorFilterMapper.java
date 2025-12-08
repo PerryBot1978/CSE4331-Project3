@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class ActorFilterMapper extends Mapper<Text, Text, Text, IntWritable> {
-    public static final String ACTOR = "Christian Bale";
+    public static final String ACTOR = "tom holland";
 
     protected Text out_key = new Text();
     protected IntWritable out_value = new IntWritable(1);
@@ -30,7 +30,7 @@ public class ActorFilterMapper extends Mapper<Text, Text, Text, IntWritable> {
         String year = itr.nextToken();
         String actorName = itr.nextToken();
 
-        if (actorName.equals(ACTOR)) {
+        if (actorName.equalsIgnoreCase(ACTOR)) {
             out_key.set(year);
             context.write(out_key, out_value);
         }
