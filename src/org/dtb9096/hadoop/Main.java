@@ -40,7 +40,7 @@ public class Main {
 
         JobConf conf1 = new JobConf(conf);
         conf1.setNumMapTasks(mapperCount1);
-        conf1.setNumReduceTasks(reducerCount1);
+        conf1.setNumReduceTasks(1); // There can only be one
 
         Job job1 = Job.getInstance(conf1, "title/actor join");
         job1.setJarByClass(Main.class);

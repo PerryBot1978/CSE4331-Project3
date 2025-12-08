@@ -28,7 +28,7 @@ public class TitleBasicsMapper extends Mapper<Object, Text, Text, Text> {
 
         String titleID = itr.nextToken();
         String titleType = itr.nextToken();
-        itr.nextToken();
+        itr.nextToken(); // Clearing out unused values from the .tsv
         itr.nextToken();
         itr.nextToken();
         String year = itr.nextToken();
