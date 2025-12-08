@@ -74,6 +74,7 @@ public class Main {
         job2.setOutputValueClass(IntWritable.class);
 
         job2.setMapperClass(ActorFilterMapper.class);
+        job2.setCombinerClass(TitleCountReducer.class);
         job2.setReducerClass(TitleCountReducer.class);
 
         int code = job2.waitForCompletion(true) ? 0 : 1;
